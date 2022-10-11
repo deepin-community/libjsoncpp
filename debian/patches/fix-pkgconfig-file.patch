@@ -1,0 +1,14 @@
+Description: Fix the VERSION in pkgconfig, the variable was not correctly initialized, leading to a empty "Version:" in .pc file
+Author: Gianfranco Costamagna <locutusofborg@debian.org>
+Last-Update: 2020-12-04
+Forwarded: https://github.com/open-source-parsers/jsoncpp/pull/1236
+--- libjsoncpp-1.9.4.orig/CMakeLists.txt
++++ libjsoncpp-1.9.4/CMakeLists.txt
+@@ -73,6 +73,7 @@ project(jsoncpp
+         LANGUAGES CXX)
+ 
+ message(STATUS "JsonCpp Version: ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
++set(JSONCPP_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
+ set(PROJECT_SOVERSION 24)
+ 
+ option(JSONCPP_WITH_TESTS "Compile and (for jsoncpp_check) run JsonCpp test executables" ON)
