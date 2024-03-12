@@ -1,0 +1,21 @@
+From: =?utf-8?q?Timo_R=C3=B6hling?= <roehling@debian.org>
+Date: Sun, 9 Jul 2023 23:23:51 +0200
+Subject: Fix cmake_policy()
+
+Bug-Debian: https://bugs.debian.org/1040719
+Forwarded: https://github.com/open-source-parsers/jsoncpp/pull/1499
+---
+ jsoncppConfig.cmake.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/jsoncppConfig.cmake.in b/jsoncppConfig.cmake.in
+index 76570bc..fdd9fea 100644
+--- a/jsoncppConfig.cmake.in
++++ b/jsoncppConfig.cmake.in
+@@ -1,5 +1,5 @@
+ cmake_policy(PUSH)
+-cmake_policy(VERSION 3.0)
++cmake_policy(VERSION 3.0...3.26)
+ 
+ @PACKAGE_INIT@
+ 

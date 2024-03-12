@@ -1,0 +1,32 @@
+From: =?utf-8?q?Timo_R=C3=B6hling?= <roehling@debian.org>
+Date: Sun, 2 Jul 2023 22:53:29 +0200
+Subject: Prevent duplicate JsonCpp::JsonCpp target definition
+
+Author: zeroxia
+Bug: https://github.com/open-source-parsers/jsoncpp/pull/1491
+---
+ jsoncpp-namespaced-targets.cmake | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/jsoncpp-namespaced-targets.cmake b/jsoncpp-namespaced-targets.cmake
+index ac1504e..70a79ee 100644
+--- a/jsoncpp-namespaced-targets.cmake
++++ b/jsoncpp-namespaced-targets.cmake
+@@ -1,7 +1,9 @@
+-if (TARGET jsoncpp_static)
+-    add_library(JsonCpp::JsonCpp INTERFACE IMPORTED)
+-    set_target_properties(JsonCpp::JsonCpp PROPERTIES INTERFACE_LINK_LIBRARIES "jsoncpp_static")
+-elseif (TARGET jsoncpp_lib)
+-    add_library(JsonCpp::JsonCpp INTERFACE IMPORTED)
+-    set_target_properties(JsonCpp::JsonCpp PROPERTIES INTERFACE_LINK_LIBRARIES "jsoncpp_lib")
+-endif ()
+\ No newline at end of file
++if (NOT TARGET JsonCpp::JsonCpp)
++    if (TARGET jsoncpp_static)
++        add_library(JsonCpp::JsonCpp INTERFACE IMPORTED)
++        set_target_properties(JsonCpp::JsonCpp PROPERTIES INTERFACE_LINK_LIBRARIES "jsoncpp_static")
++    elseif (TARGET jsoncpp_lib)
++        add_library(JsonCpp::JsonCpp INTERFACE IMPORTED)
++        set_target_properties(JsonCpp::JsonCpp PROPERTIES INTERFACE_LINK_LIBRARIES "jsoncpp_lib")
++    endif ()
++endif ()

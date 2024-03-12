@@ -1,11 +1,13 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
 %:
 	dh $@ --buildsystem=cmake
 
 ifneq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-CONFIGURE_FLAGS += -DJSONCPP_WITH_TESTS=Off
+CONFIGURE_FLAGS += -DJSONCPP_WITH_TESTS=OFF
 endif
 
 override_dh_auto_configure:
@@ -16,17 +18,9 @@ override_dh_auto_configure:
 			$(CONFIGURE_FLAGS)
 
 override_dh_auto_test:
-	dh_auto_test --max-parallel=1
+	dh_auto_test --buildsystem=cmake --max-parallel=1
 
-override_dh_auto_build-indep:
+execute_after_dh_auto_build-indep:
 	ln -s obj-*/version .
 	python3 doxybuild.py --doxygen=/usr/bin/doxygen
 	rm version
-	dh_auto_build
-
-override_dh_auto_clean:
-	dh_auto_clean
-	rm -rf dist
-	rm -f devtools/*.pyc
-	rm -f doc/doxyfile
-	rm -f doc/*.db

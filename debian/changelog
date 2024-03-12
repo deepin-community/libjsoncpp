@@ -1,3 +1,47 @@
+libjsoncpp (1.9.5-6) unstable; urgency=medium
+
+  * Bump CMake policy version to avoid deprecation warning (Closes: #1040719)
+
+ -- Timo Röhling <roehling@debian.org>  Sun, 09 Jul 2023 23:26:30 +0200
+
+libjsoncpp (1.9.5-5) unstable; urgency=medium
+
+  * Simplify d/rules and properly clean up after build
+  * Prevent duplicate JsonCpp::JsonCpp target definition
+  * Bump Standards-Version to 4.6.2
+  * Add hardening flags to build
+
+ -- Timo Röhling <roehling@debian.org>  Sun, 02 Jul 2023 22:56:39 +0200
+
+libjsoncpp (1.9.5-4) unstable; urgency=medium
+
+  * Fix autopkgtest to not use empty string as CLI argument
+
+ -- Timo Röhling <roehling@debian.org>  Wed, 30 Mar 2022 09:20:36 +0200
+
+libjsoncpp (1.9.5-3) unstable; urgency=medium
+
+  * Use proper CMake config in autopkgtest
+
+ -- Timo Röhling <roehling@debian.org>  Sat, 29 Jan 2022 17:46:38 +0100
+
+libjsoncpp (1.9.5-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Timo Röhling <roehling@debian.org>  Sat, 11 Dec 2021 15:31:59 +0100
+
+libjsoncpp (1.9.5-1) experimental; urgency=medium
+
+  * New maintainer by courtesy of Peter Spiess-Knafl.
+    Thanks to Peter for his contributions
+  * New upstream version 1.9.5
+  * Drop fix-pkgconfig-file.patch (no longer needed)
+  * Bump Standards-Version to 4.6.0
+  * New SONAME
+
+ -- Timo Röhling <roehling@debian.org>  Fri, 12 Nov 2021 15:29:51 +0100
+
 libjsoncpp (1.9.4-5) unstable; urgency=medium
 
   * Team upload (salsa.d.o/debian namespace)
