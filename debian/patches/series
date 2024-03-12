@@ -1,1 +1,2 @@
-fix-pkgconfig-file.patch
+0001-Prevent-duplicate-JsonCpp-JsonCpp-target-definition.patch
+0002-Fix-cmake_policy.patch

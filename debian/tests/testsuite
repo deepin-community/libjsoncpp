@@ -34,19 +34,13 @@ cmake_minimum_required(VERSION 3.7)
 project(jsoncpp_test)
 
 find_package(jsoncpp REQUIRED)
-# Using pkg-config instead of cmake config-mode because the
-# packaged jsoncppConfig.cmake does not seem to work beyond detection.
-find_package(PkgConfig)
-pkg_check_modules(PC_jsoncpp QUIET jsoncpp)
-include_directories(\${PC_jsoncpp_INCLUDE_DIRS})
-link_libraries(\${PC_jsoncpp_LIBRARIES})
-
 add_executable(jsoncpp_test main.cpp jsontest.cpp jsontest.h fuzz.cpp fuzz.h)
+target_link_libraries(jsoncpp_test PRIVATE JsonCpp::JsonCpp)
 
 EOF
 
 # Configure, build and execute.
 mkdir build && cd build
-cmake "$CCFILE" ..
+cmake $CCFILE ..
 make VERBOSE=1 -j$(nproc)
 ./jsoncpp_test

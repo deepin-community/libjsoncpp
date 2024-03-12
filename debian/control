@@ -1,16 +1,16 @@
 Source: libjsoncpp
 Priority: optional
-Maintainer: Peter Spiess-Knafl <dev@spiessknafl.at>
+Maintainer: Timo Röhling <roehling@debian.org>
 Build-Depends: cmake, debhelper-compat (= 13), python3:any
 Build-Depends-Indep: doxygen
-Standards-Version: 4.5.0
+Standards-Version: 4.6.2
 Section: libs
 Rules-Requires-Root: no
 Homepage: https://github.com/open-source-parsers/jsoncpp
 Vcs-Git: https://salsa.debian.org/debian/libjsoncpp.git
 Vcs-Browser: https://salsa.debian.org/debian/libjsoncpp
 
-Package: libjsoncpp24
+Package: libjsoncpp25
 Architecture: any
 Multi-Arch: same
 Depends: ${misc:Depends}, ${shlibs:Depends}
@@ -50,7 +50,7 @@ Package: libjsoncpp-dev
 Section: libdevel
 Architecture: any
 Multi-Arch: same
-Depends: libjsoncpp24 (= ${binary:Version}), ${misc:Depends}
+Depends: libjsoncpp25 (= ${binary:Version}), ${misc:Depends}
 Description: library for reading and writing JSON for C++ (devel files)
  This package provides all required developer resources like header-files
  and statically linked version of the library.
